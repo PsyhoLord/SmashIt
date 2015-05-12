@@ -106,7 +106,7 @@ namespace SmashIt.Android
 		{
 			
 			// aapt resource value: 0x7f040000
-			public const int TaskSQLite = 2130968576;
+			public const int TasksSQLite = 2130968576;
 			
 			static Raw()
 			{
