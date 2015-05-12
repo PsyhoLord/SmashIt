@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmashIt", "SmashIt\SmashIt.csproj", "{24BC503C-0F76-4ED3-98F4-D70FF0DC31B3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Targets", "Targets", "{2133FC5D-8676-416C-8CA7-C3E0AEA94A76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmashIt.Android", "SmashIt.Android\SmashIt.Android.csproj", "{02268D4A-F63A-45EE-BA50-3745BA850515}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +19,17 @@ Global
 		{24BC503C-0F76-4ED3-98F4-D70FF0DC31B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24BC503C-0F76-4ED3-98F4-D70FF0DC31B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24BC503C-0F76-4ED3-98F4-D70FF0DC31B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02268D4A-F63A-45EE-BA50-3745BA850515}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02268D4A-F63A-45EE-BA50-3745BA850515}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02268D4A-F63A-45EE-BA50-3745BA850515}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{02268D4A-F63A-45EE-BA50-3745BA850515}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02268D4A-F63A-45EE-BA50-3745BA850515}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02268D4A-F63A-45EE-BA50-3745BA850515}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{02268D4A-F63A-45EE-BA50-3745BA850515} = {2133FC5D-8676-416C-8CA7-C3E0AEA94A76}
 	EndGlobalSection
 EndGlobal
