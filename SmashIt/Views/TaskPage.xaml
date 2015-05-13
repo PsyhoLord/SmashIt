@@ -2,12 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmashIt.TaskPage"
-             Title="Hello XAML Page"
-             Padding="10, 40, 10, 10">
+             Padding="0, 20, 0, 0">
   <StackLayout>
     <!--Task-->
     <Label  Text="Task name:"
-            VerticalOptions="Start"
             XAlign="Center"
             IsVisible="true"
             FontSize="Large"
@@ -20,7 +18,6 @@
 
     <!--Notes-->
     <Label  Text="Notes:"
-            VerticalOptions="Start"
             XAlign="Center"
             IsVisible="true"
             FontSize="Large"
@@ -57,15 +54,15 @@
     <!--Buttons-->
     <Button Text="Save"
                HorizontalOptions="CenterAndExpand"
-               VerticalOptions="CenterAndExpand"
+               VerticalOptions="Center"
                Clicked="SaveButtonClicked" />
     <Button Text="Delete"
                HorizontalOptions="CenterAndExpand"
-               VerticalOptions="CenterAndExpand"
+               VerticalOptions="Center"
                Clicked="DeleteButtonClicked" />
     <Button Text="Cancel"
                HorizontalOptions="CenterAndExpand"
-               VerticalOptions="CenterAndExpand"
+               VerticalOptions="Center"
                Clicked="CancelButtonClicked" />
   </StackLayout>
   <!--

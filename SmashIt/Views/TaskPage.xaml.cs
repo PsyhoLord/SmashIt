@@ -23,12 +23,16 @@ namespace SmashIt
         void OnSlidedProgressChanged(object sender,
                           ValueChangedEventArgs args)
         {
-            ProgressLabel.Text = ((Slider)sender).Value.ToString("F1")+"%";
-            double R = 255;
-            R -= (((Slider) sender).Value/100*255);
-            double G = 0;
-            G += ((Slider) sender).Value/100*255;
-            double B = 75;
+            var SliderValue = ((Slider)sender).Value;
+            ProgressLabel.Text = SliderValue.ToString("F1") + "%";
+            int R, G, B;
+            R = 255;
+            G = 0;
+            B = 0;
+            // changing color from red to green (0 -> 100)
+            R -= (int)(SliderValue * 2.55);
+            G += (int)(SliderValue * 2.55);
+            
             ProgressLabel.TextColor = Color.FromRgb(R,G,B);
         }
 

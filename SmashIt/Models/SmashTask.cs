@@ -1,4 +1,5 @@
-﻿using SQLite.Net.Attributes;
+﻿using System;
+using SQLite.Net.Attributes;
 
 namespace SmashIt
 {
@@ -14,10 +15,10 @@ namespace SmashIt
         public string Notes { get; set; }
         public bool Done { get; set; }
         public float CurrentProgress { get; set; }
-        //public DateTime Deadline { get; set; }
-        public int Year;
-        public int Month;
-        public int Day;
+        public DateTime Deadline { get; set; }
+        //public int Year;
+        //public int Month;
+        //public int Day;
     }
 }
 
