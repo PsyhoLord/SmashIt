@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmashIt.TaskPage"
+             Title="Hello XAML Page"
+             Padding="10, 40, 10, 10">
+  <StackLayout>
+    <!--Task-->
+    <Label  Text="Task name:"
+            VerticalOptions="Start"
+            XAlign="Center"
+            IsVisible="true"
+            FontSize="Large"
+            FontAttributes="Bold"
+            TextColor="Aqua" />
+
+    <Entry  x:Name="EntryTaskName"
+            IsVisible="true"
+            TextColor="Lime" />
+
+    <!--Notes-->
+    <Label  Text="Notes:"
+            VerticalOptions="Start"
+            XAlign="Center"
+            IsVisible="true"
+            FontSize="Large"
+            FontAttributes="Bold"
+            TextColor="Aqua" />
+
+    <Entry  x:Name="EntryTaskNotes"
+            IsVisible="true"
+            TextColor="Lime" />
+
+    <!--Progress slider-->
+    <Label   x:Name="ProgressLabel"
+             Text="0%:"
+             XAlign="Center"
+             IsVisible="true"
+             FontSize="Large"
+             FontAttributes="Bold"
+             TextColor="Red" />
+
+    <Slider x:Name="ProgressSlider"
+            VerticalOptions="CenterAndExpand"
+            Maximum="100"
+            ValueChanged="OnSlidedProgressChanged" />
+    
+    <Label   Text="Done:"
+             XAlign="Center"
+             IsVisible="true"
+             FontSize="Large"
+             FontAttributes="Bold"
+             TextColor="Aqua" />
+    
+    <Switch x:Name = "DoneSwitch"
+            PropertyChanged="IsDoneStateChanged"/>
+    <!--Buttons-->
+    <Button Text="Save"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"
+               Clicked="SaveButtonClicked" />
+    <Button Text="Delete"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"
+               Clicked="DeleteButtonClicked" />
+    <Button Text="Cancel"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"
+               Clicked="CancelButtonClicked" />
+  </StackLayout>
+  <!--
+<Label  Text="{Binding MainText}"
+        VerticalOptions="Center"
+        HorizontalOptions="Center" />-->
+
+</ContentPage>

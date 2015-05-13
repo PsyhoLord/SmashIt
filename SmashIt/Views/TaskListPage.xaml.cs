@@ -57,5 +57,7 @@ namespace SmashIt
             ((App)App.Current).ResumeAtTaskId = -1;
             listView.ItemsSource = App.Database.GetItems();
         }
+
+        
     }
 }
