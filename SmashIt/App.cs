@@ -47,11 +47,11 @@ namespace SmashIt
 
                     if (ResumeAtTaskId >= 0)
                     {
-                        var todoPage = new TaskPage();
-                        todoPage.BindingContext = Database.GetItem(ResumeAtTaskId);
+                        var taskPage = new TaskPage();
+                        taskPage.BindingContext = Database.GetItem(ResumeAtTaskId);
 
                         MainPage.Navigation.PushAsync(
-                            todoPage,
+                            taskPage,
                             false); // no animation
                     }
                 }

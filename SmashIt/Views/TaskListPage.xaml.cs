@@ -6,19 +6,25 @@ namespace SmashIt
     public partial class TaskListPage : ContentPage
     {
         ListView listView;
-
+        
         public TaskListPage()
         {
-            //InitializeComponent();
+            InitializeComponent();
 
             Title = "iNeed To!";
+            var cell = new DataTemplate(typeof(ImageCell));
 
-            listView = new ListView
+            cell.SetBinding(TextCell.TextProperty, "Name");
+            cell.SetBinding(TextCell.DetailProperty, new Binding("TimeLeft"));
+            cell.SetBinding(ImageCell.ImageSourceProperty, "DoneImage");
+
+            listView  = new ListView
             {
-                ItemTemplate = new DataTemplate (typeof(TaskCell))
+            //    ItemsSource = tasksListView
+                ItemTemplate = cell
             };
 
-            listView.ItemSelected += (sender, e) =>
+            tasksListView.ItemSelected += (sender, e) =>
             {
                 var taskItem = (SmashTask)e.SelectedItem;
                 var taskPage = new TaskPage { BindingContext = taskItem };
@@ -29,11 +35,18 @@ namespace SmashIt
                 Navigation.PushAsync(taskPage);
             };
 
-            var layout = new StackLayout();
+            // Push the list view down below the status bar on iOS.
+            if (Device.OS == TargetPlatform.iOS)
+            Padding = new Thickness (10, Device.OnPlatform (20, 0, 0), 10, 5);
 
-            layout.Children.Add(listView);
-            layout.VerticalOptions = LayoutOptions.FillAndExpand;
-            Content = layout;
+            // Set the content for the page.
+            Content = new StackLayout
+            {
+                Children =
+                {
+                    listView
+                }
+            };
 
             #region toolbar
             ToolbarItem tbi = null;
@@ -55,7 +68,7 @@ namespace SmashIt
             base.OnAppearing();
             // reset the 'resume' id, since we just want to re-start here
             ((App)App.Current).ResumeAtTaskId = -1;
-            listView.ItemsSource = App.Database.GetItems();
+            tasksListView.ItemsSource = App.Database.GetItems();
         }
 
         

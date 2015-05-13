@@ -2,4 +2,26 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmashIt.TaskListPage">
+  <ContentPage.Content>
+    <StackLayout VerticalOptions="FillAndExpand" Padding="5,20,5,0" >
+      <!--Title-->
+      <Label
+				Text="I will smash it!"
+				VerticalOptions="Center"
+				Font="35"
+				HorizontalOptions="Center" />
+      
+      <ListView x:Name="tasksListView" ItemsSource="{Binding tasksListView}">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ImageCell
+							Text="{Binding Name}"
+							Detail="{Binding Position, StringFormat='{0}'}"
+							ImageSource="{Binding Image}">
+            </ImageCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </StackLayout>
+  </ContentPage.Content>
 </ContentPage>

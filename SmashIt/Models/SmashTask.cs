@@ -1,5 +1,6 @@
 ﻿using System;
 using SQLite.Net.Attributes;
+using Xamarin.Forms;
 
 namespace SmashIt
 {
@@ -19,6 +20,18 @@ namespace SmashIt
         //public int Year;
         //public int Month;
         //public int Day;
+
+        public String TimeLeft()
+        {
+            var CurrentDate = DateTime.Now;
+            var diff = Deadline.Subtract(CurrentDate);
+            return String.Format("{0}", diff.TotalDays);
+        }
+
+        public String DoneImage()
+        {
+            return Done ? FileImageSource.FromFile("Done.png").ToString() : FileImageSource.FromFile("unDone.png").ToString();
+        }
     }
 }
 

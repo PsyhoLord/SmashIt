@@ -109,9 +109,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />
-    <AndroidResource Include="Resources\drawable\check.png" />
-    <AndroidResource Include="Resources\drawable\check2x.png" />
     <AndroidResource Include="Resources\drawable\plus.png" />
+    <AndroidResource Include="Resources\drawable\Done.png" />
+    <AndroidResource Include="Resources\drawable\Done2x.png" />
+    <AndroidResource Include="Resources\drawable\unDone.png" />
+    <AndroidResource Include="Resources\drawable\unDone2x.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SmashIt\SmashIt.csproj">
