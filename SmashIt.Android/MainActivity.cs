@@ -3,7 +3,7 @@ using Android.OS;
 using Android.Content.PM;
 using SmashIt;
 
-namespace Todo
+namespace SmashIt
 {
     [Activity(Label = "Todo", Icon = "@drawable/icon", MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]

@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace Todo
+namespace SmashIt
 {
     public class TaskCell : ViewCell
     {

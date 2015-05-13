@@ -1,6 +1,6 @@
 ﻿using SQLite.Net;
 
-namespace Todo
+namespace SmashIt
 {
     public interface ISQLite
     {

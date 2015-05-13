@@ -1,7 +1,6 @@
 ﻿using Xamarin.Forms;
-using SmashIt;
 
-namespace Todo
+namespace SmashIt
 {
     public class TaskPage : ContentPage
     {
@@ -26,23 +25,23 @@ namespace Todo
             var saveButton = new Button { Text = "Save" };
             saveButton.Clicked += (sender, e) =>
             {
-                var SmashTask = (SmashTask)BindingContext;
-                App.Database.SaveItem(SmashTask);
+                var smashTask = (SmashTask)BindingContext;
+                App.Database.SaveItem(smashTask);
                 this.Navigation.PopAsync();
             };
 
             var deleteButton = new Button { Text = "Delete" };
             deleteButton.Clicked += (sender, e) =>
             {
-                var SmashTask = (SmashTask)BindingContext;
-                App.Database.DeleteItem(SmashTask.ID);
+                var smashTask = (SmashTask)BindingContext;
+                App.Database.DeleteItem(smashTask.ID);
                 this.Navigation.PopAsync();
             };
 
             var cancelButton = new Button { Text = "Cancel" };
             cancelButton.Clicked += (sender, e) =>
             {
-                var SmashTask = (SmashTask)BindingContext;
+                var smashTask = (SmashTask)BindingContext;
                 this.Navigation.PopAsync();
             };
 
