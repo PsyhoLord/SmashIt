@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ServiceModel.Channels;
 using Xamarin.Forms;
 
 namespace SmashIt
@@ -7,39 +6,83 @@ namespace SmashIt
     public partial class TaskCell : ViewCell
     {
         //private Switch doneStatus;
+        private Label nameLabel;
+        private Label timeLeftLabel;
+
+        private ProgressBar progress;
+        private DatePicker deadline;
 
         public TaskCell()
         {
-            //InitializeComponent();
-            var smashTask = (SmashTask)BindingContext;
-
-
-            // Task Name
-            var nameLabel = new Label
-            {
-                YAlign = TextAlignment.Center,
-                //TextColor = Color.FromRgb(75, 57, 57)
-            };
-            nameLabel.SetBinding(Label.TextProperty, "Name");
-            //nameLabel.TextColor = GetLabelColor(smashTask.CurrentProgress);
-            
-            // Done tick
-            var doneStatusImage = new Image{};
+            // Done tick (image) that show Done/Undone status
+            var doneStatusImage = new Image();
             doneStatusImage.SetBinding(Image.IsVisibleProperty, "Done");
             doneStatusImage.BindingContextChanged += DoneStatusOnBindingContextChanged;
-            
+
+            // Task Name
+            nameLabel = new Label
+            {
+                YAlign = TextAlignment.Center,
+            };
+            nameLabel.SetBinding(Label.TextProperty, "Name");
+
+            // time left label
+            timeLeftLabel = new Label
+            {
+                YAlign = TextAlignment.Center,
+            };
+
+            /////>>> Invisible fields <<</////
+            // Invisible to get current progress to set color for text
+            progress = new ProgressBar
+            {
+                IsVisible = false
+            };
+            progress.SetBinding(ProgressBar.ProgressProperty, "CurrentProgress");
+            progress.PropertyChanging += ProgressOnBindingContextChanged;
+
+            // Invisible to get deadline date to show days left to deadline
+            deadline = new DatePicker()
+            {
+                IsVisible = false
+            };
+            deadline.SetBinding(DatePicker.DateProperty, "Deadline");
+            deadline.BindingContextChanged += DeadlineOnBindingContextChanged;
+
             // Pushing everything on page
             var layout = new StackLayout
             {
                 Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5),
                 Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.StartAndExpand,
-                Children = {doneStatusImage, nameLabel  }
+                Children =
+                {
+                    // visible
+                    doneStatusImage,
+                    nameLabel,
+                    timeLeftLabel,
+                    // invisible
+                    progress,
+                    deadline
+                }
             };
             View = layout;
         }
 
-        private Color GetLabelColor(float progressValue)
+        private void DeadlineOnBindingContextChanged(object sender, EventArgs eventArgs)
+        {
+            DateTime currentDateTime = DateTime.Today;
+            var timeLeft = ((DatePicker)sender).Date - currentDateTime;
+            timeLeftLabel.Text = String.Format("{0} days", timeLeft.TotalDays);
+        }
+
+        private void ProgressOnBindingContextChanged(object sender, EventArgs eventArgs)
+        {
+            var progress = ((ProgressBar)sender).Progress;
+            nameLabel.TextColor = GetLabelColor(progress);
+        }
+
+        private Color GetLabelColor(double progressValue)
         {
             //var smashTask = (SmashTask) BindingContext;
 

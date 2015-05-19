@@ -19,7 +19,6 @@ namespace SmashIt
             ProgressSlider.SetBinding(Slider.ValueProperty, "CurrentProgress", BindingMode.TwoWay);
             DoneSwitch.SetBinding(Switch.IsToggledProperty, "Done");
             DateField.SetBinding(DatePicker.DateProperty, "Deadline");
-           //ew DateElement("The Date", DateTime.Today).Bind(this, "Value TheDate")
 
             ProgressSlider.PropertyChanged += ProgressSlider_PropertyChanged;
             DoneSwitch.PropertyChanged += DoneSwitch_PropertyChanged;

@@ -15,7 +15,7 @@ namespace SmashIt
         public string Name { get; set; }
         public string Notes { get; set; }
         public bool Done { get; set; }
-        public float CurrentProgress { get; set; }
+        public double CurrentProgress { get; set; }
         public DateTime Deadline { get; set; }
     }
 }
