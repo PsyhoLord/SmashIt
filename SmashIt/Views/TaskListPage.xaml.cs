@@ -5,23 +5,19 @@ namespace SmashIt
 {
     public partial class TaskListPage : ContentPage
     {
-        ListView listView;
-        
+        private ListView tasksListView;
+        //private DataTemplate cell;
+
         public TaskListPage()
         {
-            InitializeComponent();
+            //InitializeComponent();
 
-            Title = "iNeed To!";
-            var cell = new DataTemplate(typeof(ImageCell));
-
-            cell.SetBinding(TextCell.TextProperty, "Name");
-            cell.SetBinding(TextCell.DetailProperty, new Binding("TimeLeft"));
-            cell.SetBinding(ImageCell.ImageSourceProperty, "DoneImage");
-
-            listView  = new ListView
+            Title = "Smash it!";
+            
+            tasksListView = new ListView
             {
-            //    ItemsSource = tasksListView
-                ItemTemplate = cell
+                ItemTemplate = new DataTemplate(typeof(TaskCell))//,
+                //ItemsSource = App.Database.GetItems()
             };
 
             tasksListView.ItemSelected += (sender, e) =>
@@ -30,7 +26,6 @@ namespace SmashIt
                 var taskPage = new TaskPage { BindingContext = taskItem };
 
                 ((App)App.Current).ResumeAtTaskId = taskItem.ID;
-                Debug.WriteLine("setting ResumeAtNeedId = " + taskItem.ID);
 
                 Navigation.PushAsync(taskPage);
             };
@@ -42,9 +37,10 @@ namespace SmashIt
             // Set the content for the page.
             Content = new StackLayout
             {
+                VerticalOptions = LayoutOptions.FillAndExpand,
                 Children =
                 {
-                    listView
+                    tasksListView
                 }
             };
 
@@ -70,7 +66,5 @@ namespace SmashIt
             ((App)App.Current).ResumeAtTaskId = -1;
             tasksListView.ItemsSource = App.Database.GetItems();
         }
-
-        
     }
 }

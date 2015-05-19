@@ -20,10 +20,18 @@ namespace SmashIt
             DoneSwitch.SetBinding(Switch.IsToggledProperty, "Done");
             DateField.SetBinding(DatePicker.DateProperty, "Deadline");
            //ew DateElement("The Date", DateTime.Today).Bind(this, "Value TheDate")
+
+            ProgressSlider.PropertyChanged += ProgressSlider_PropertyChanged;
+            DoneSwitch.PropertyChanged += DoneSwitch_PropertyChanged;
         }
 
-        void OnSlidedProgressChanged(object sender,
-                          ValueChangedEventArgs args)
+        void DoneSwitch_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            //ProgressSlider.Value = 100;
+            ProgressSlider.IsEnabled = !DoneSwitch.IsToggled;
+        }
+
+        void ProgressSlider_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             var sliderValue = ((Slider)sender).Value;
             ProgressLabel.Text = sliderValue.ToString("F1") + "%";
@@ -34,10 +42,10 @@ namespace SmashIt
             // changing color from red to green (0 -> 100)
             R -= (int)(sliderValue * 2.55);
             G += (int)(sliderValue * 2.55);
-            
-            ProgressLabel.TextColor = Color.FromRgb(R,G,B);
-        }
 
+            ProgressLabel.TextColor = Color.FromRgb(R, G, B);
+        }
+        
         async void SaveButtonClicked(object sender, EventArgs args)
         {
             //Button button = (Button)sender;
@@ -61,12 +69,6 @@ namespace SmashIt
         {
             var smashTask = (SmashTask)BindingContext;
             this.Navigation.PopAsync();
-        }
-
-        private void IsDoneStateChanged(object sender, PropertyChangedEventArgs e)
-        {
-            ProgressSlider.Value = 100;
-            ProgressSlider.IsEnabled = !DoneSwitch.IsToggled;
         }
     }
 }

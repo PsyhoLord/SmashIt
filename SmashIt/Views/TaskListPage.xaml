@@ -11,17 +11,6 @@
 				Font="35"
 				HorizontalOptions="Center" />
       
-      <ListView x:Name="tasksListView" ItemsSource="{Binding tasksListView}">
-        <ListView.ItemTemplate>
-          <DataTemplate>
-            <ImageCell
-							Text="{Binding Name}"
-							Detail="{Binding Position, StringFormat='{0}'}"
-							ImageSource="{Binding Image}">
-            </ImageCell>
-          </DataTemplate>
-        </ListView.ItemTemplate>
-      </ListView>
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>
